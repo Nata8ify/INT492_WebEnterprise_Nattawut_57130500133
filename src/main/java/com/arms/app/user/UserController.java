@@ -21,14 +21,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	private static final int PAGE_SIZE = 5;
+	private static final int PAGE_SIZE = 10;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, @PageableDefault(value = 2) Pageable pageable, Principal principal){
 		Page<User> pageUser = userService.findAll(pageable);
 		System.out.println(pageable.toString());
 		model.addAttribute("page", pageUser);
-		model.addAttribute("pagesize", PAGE_SIZE);
+		model.addAttribute("pagesize", PAGE_SIZE-1);
 		model.addAttribute("pageable", pageable);
 		model.addAttribute("url", "/user/list");
 		model.addAttribute("users", pageUser.getContent());
