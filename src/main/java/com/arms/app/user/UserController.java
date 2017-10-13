@@ -23,6 +23,7 @@ public class UserController {
 	public String list(Model model, @PageableDefault(value = 5) Pageable pageable){
 		Page<User> pageUser = userService.findAll(pageable);
 		model.addAttribute("page", pageUser);
+		model.addAttribute("url", "/user/list");
 		model.addAttribute("users", pageUser.getContent());
 		return "user/list";
 	}

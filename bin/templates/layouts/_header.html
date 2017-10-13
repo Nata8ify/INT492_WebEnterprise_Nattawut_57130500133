@@ -1,6 +1,7 @@
-<header>
-	<p>header</p>
+<header th:fragment="header">
+	<p>Header</p>
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Logout" /><br/>
 	</form>
+
 </header>
