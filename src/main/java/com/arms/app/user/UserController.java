@@ -1,5 +1,7 @@
 package com.arms.app.user;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,11 +22,12 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, @PageableDefault(value = 5) Pageable pageable){
+	public String list(Model model, @PageableDefault(value = 1) Pageable pageable, Principal principal){
 		Page<User> pageUser = userService.findAll(pageable);
 		model.addAttribute("page", pageUser);
 		model.addAttribute("url", "/user/list");
 		model.addAttribute("users", pageUser.getContent());
+		System.out.println(principal);
 		return "user/list";
 	}
 	

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html layout:decorator="layouts/main">
+<html layout:decorator="layouts/main" >
 <head>
-<meta charset="ISO-8859-1">
 <title>Login Page</title>
 </head>
 <body>
 	<div layout:fragment="body" class="container">
 		<div class="jumbotron">
 			<form th:action="@{/login}" method="post">
-				<input name="email" type="email" placeholder="E-mail"
-					required="required" class="form-control" /><br /> 
-					<input
-					name="password" type="password" placeholder="Password"
-					required="required" class="form-control" /><br /> 
-					<input
-					type="reset" value="Reset" class="btn btn-lg btn-danger" style="cursor: pointer;"/>
-					<input
-					type="submit" value="Login" class="btn btn-lg btn-default" style="cursor: pointer;"/><br />
+			 <div class="input-group" style="margin=16px;">
+			 	<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+				<input name="email" type="email" placeholder="E-mail" required="required" class="form-control" />
+			</div>
+			<br/>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>		
+				<input name="password" type="password" placeholder="Password" required="required" class="form-control" />
+			</div>
+			<br/>
+			<div style="float: right;">
+				<input type="submit" value="Login" class="btn btn-lg btn-default" style=""/>
+				<input type="reset" value="Reset" class="btn btn-lg btn-danger" /> 
+			</div>
+			<br/>
 			</form>
 		</div>
 

@@ -1,7 +1,16 @@
 <header th:fragment="header">
-	<p>Header</p>
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Logout" /><br/>
-	</form>
-
+	<form th:action="@{/logout}" method="post" id="logout"></form>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" th:href="@{/}">INT403 Individual Project</a>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
+      <li><a  href="#" ><div class=""><i sec:authentication="principal.authorities"></i></a></li>
+      <li><a  href="#" onclick="$('#logout').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
 </header>
