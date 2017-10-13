@@ -26,15 +26,9 @@
 				<span th:if="${page.number == 0}">Previous</span>
 			</li>
 			<!-- START - Wrapping Conditions -->
-			<li th:if="${page.number < pagesize}" th:each='i : ${#numbers.sequence(0, pagesize)}' th:class="(${i}==${page.number})?'page-item active':'page-item'">
+			<li th:each='i : ${#numbers.sequence(pageprop.start, pageprop.end)}' th:class="(${i}==${page.number})?'page-item active':'page-item'">
 				<a class="page-link" th:href="@{'/user/list'(page=${i})}"> <span th:text='${i+1}'>1</span></a>
 			</li>
-			<li th:if="${page.number >= pagesize AND page.number <= page.totalPages-pagesize}" th:each='i : ${#numbers.sequence(page.number-pagesize/2, page.number+pagesize/2)}' th:class="(${i}==${page.number})?'page-item active':'page-item'">
-				<a class="page-link" th:href="@{'/user/list'(page=${i})}"> <span th:text='${i+1}'>1</span></a>
-			</li>
- 			<li th:if="${page.number > page.totalPages-pagesize}" th:each='i : ${#numbers.sequence(page.totalPages-(pagesize+1), page.totalPages-1)}' th:class="(${i}==${page.number})?'page-item active':'page-item'">
-				<a class="page-link" th:href="@{'/user/list'(page=${i})}"> <span th:text='${i+1}'>1</span></a>
-			</li> 
 			<!-- END - Wrapper Conditions -->
 			<li th:class="${page.number == page.totalPages-1}?'disabled page-item':'page-item'">
 				<a  th:if="${page.number != page.totalPages-1}" class="page-link" th:href="@{'/user/list'(page=${page.number+1})}">Next</a>
