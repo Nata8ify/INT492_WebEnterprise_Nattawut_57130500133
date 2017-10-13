@@ -24,8 +24,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
-		super.configure(http);
+		http.authorizeRequests()
+		.antMatchers("/static/**").permitAll().anyRequest().authenticated()
+		.and()
+		.formLogin().loginPage("/login").usernameParameter("email").passwordParameter("password")
+		.permitAll().defaultSuccessUrl("/user/list", true)
+		.and()
+		.logout().permitAll();
 	}
 
 	

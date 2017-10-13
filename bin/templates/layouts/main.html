@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<div th:include="layouts/_header :: header"></div>
+	<div layout:fragment="body"></div>
+	<div th:include="layouts/_footer :: footer"></div>
+</body>
+</html>
