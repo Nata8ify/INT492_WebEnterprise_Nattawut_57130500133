@@ -28,6 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/static/**").permitAll().anyRequest().authenticated()
 		.and()
 		.formLogin().loginPage("/login").usernameParameter("email").passwordParameter("password")
+		.failureUrl("/auth/fail")
 		.permitAll().defaultSuccessUrl("/user/list", true)
 		.and()
 		.logout().permitAll();

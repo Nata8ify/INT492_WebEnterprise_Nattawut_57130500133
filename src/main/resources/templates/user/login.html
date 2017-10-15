@@ -5,24 +5,33 @@
 </head>
 <body>
 	<div layout:fragment="body" class="container">
-		<div class="jumbotron">
-			<form th:action="@{/login}" method="post">
-			 <div class="input-group" style="margin=16px;">
-			 	<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				<input name="email" type="email" placeholder="E-mail" required="required" class="form-control" value="wilson@mail.com" />
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class="well" style="padding: 50px;">
+					<form th:action="@{/login}" method="post">
+					 <div class="form-group" style="margin=16px;">
+						<label>E-mail</label>
+						<input name="email" type="email" placeholder="E-mail" required="required" class="form-control input-lg" value="wilson@mail.com" />
+					</div>
+					<br/>
+					<div class="form-group">
+						<label>Password</label>
+						<input name="password" type="password" placeholder="Password" required="required" class="form-control input-lg" value="4123" />
+					</div>
+					<br/>
+					<div style="float: left;">
+						<small style="color: red;" th:text="${errMessage}"></small>
+					</div>
+					<div style="float: right;">
+						<button type="submit"  class="btn btn-lg btn-default">Login</button>
+						<input type="reset" value="Reset" class="btn btn-lg btn-danger" /> 
+					</div>
+					<br/>
+					</form>
+				</div>
 			</div>
-			<br/>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>		
-				<input name="password" type="password" placeholder="Password" required="required" class="form-control" value="4123" />
-			</div>
-			<br/>
-			<div style="float: right;">
-				<button type="submit"  class="btn btn-lg btn-default">Login</button>
-				<input type="reset" value="Reset" class="btn btn-lg btn-danger" /> 
-			</div>
-			<br/>
-			</form>
+			<div class="col-sm-2"></div>
 		</div>
 
 	</div>
