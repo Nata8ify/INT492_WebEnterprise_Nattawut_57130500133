@@ -23,7 +23,16 @@
 			</table>
 			<div th:include="common/pagination :: pagination"></div>
 		</div>
-		
+		<script>
+				$("table tr").click(function(){
+					$.ajax({
+						url : $(this).find("td:eq(0)").html(),
+						success : function(user){
+							console.log(user);
+						}
+					});
+				});
+		</script>
 	</div>
 
 </body>

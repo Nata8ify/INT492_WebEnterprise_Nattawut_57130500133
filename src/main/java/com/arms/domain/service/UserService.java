@@ -17,6 +17,10 @@ public class UserService {
 		return repository.findByEmail(email);
 	}
 	
+	public User findById(int id){
+		return repository.findOne(id);
+	}
+	
 	public Page<User> findAll(Pageable pageable){
 		return repository.findAll(pageable);
 	}

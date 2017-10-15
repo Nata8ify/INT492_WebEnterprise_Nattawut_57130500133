@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -20,6 +22,7 @@ public class Role {
 	private String roleName;
 
 	@ManyToMany(mappedBy = "roles")
+	@JsonIgnore
 	private Set<User> users = new HashSet<>();
 	
 	
