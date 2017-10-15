@@ -24,12 +24,8 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, @PageableDefault(value = 2) Pageable pageable, Principal principal){
+	public String list(Model model, @PageableDefault(value = 7) Pageable pageable, Principal principal){
 		Page<User> pageUser = userService.findAll(pageable);
-		PageProperty pageProperty = new PageProperty(pageable.getPageNumber(), pageUser.getTotalPages());
-		System.out.println("Start : "+pageProperty.getStart()+" -- End : "+pageProperty.getEnd());
-		System.out.println(pageUser.getTotalPages());
-		System.out.println(pageable.toString());
 		model.addAttribute("page", pageUser);
 		model.addAttribute("pageprop", new PageProperty(pageable.getPageNumber(), pageUser.getTotalPages()));
 		model.addAttribute("pageable", pageable);
