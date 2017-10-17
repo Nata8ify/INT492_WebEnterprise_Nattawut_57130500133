@@ -29,10 +29,34 @@
 						url : $(this).find("td:eq(0)").html(),
 						success : function(user){
 							console.log(user);
+							$("#span-email").html(user.email);
+							$("#span-roles").empty();
+							$.each(user.roles, function(index, value){
+								$("#span-roles").append(" | ".concat(value.roleName));
+							});
+							$("#modal-user-info").modal("show");
+							
 						}
 					});
 				});
 		</script>
+		<div class="modal fade" id="modal-user-info">
+			<div class="modal-content">
+				<div class="modal-header">User Information</div>
+				<div class="modal-body">
+					<table cellpadding="11px">
+						<tr>
+							<th>E-mail : </th>
+							<td>&nbsp;<span id="span-email"></span></td>
+						</tr>
+						<tr>
+							<th>Role </th>
+							<td> <span id="span-roles"></span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>
