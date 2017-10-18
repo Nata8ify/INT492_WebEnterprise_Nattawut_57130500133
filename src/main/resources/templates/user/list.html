@@ -12,27 +12,30 @@
 					<tr>
 						<td><b>ID</b></td>
 						<td><b>E-mail</b></td>
+						<td><b>Action</b></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="user : ${users}" th:object="${user}">
-						<td th:text="*{id}"></td>
-						<td th:text="*{email}"></td>
+						<td th:text="*{id}" class="sub-desc"></td>
+						<td th:text="*{email}" class="sub-desc"></td>
+						<td><i th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove"></i></td>
 					</tr>
 				</tbody>
 			</table>
 			<div th:include="common/pagination :: pagination"></div>
 		</div>
 		<script>
-				$("table tr").click(function(){
+				$("table tr").on("click", ".sub-desc", function(){
 					$.ajax({
-						url : $(this).find("td:eq(0)").html(),
+						url : $(this).parent().find("td:eq(0)").html(),
 						success : function(user){
 							console.log(user);
+							$("#span-id").html(user.id);
 							$("#span-email").html(user.email);
 							$("#span-roles").empty();
 							$.each(user.roles, function(index, value){
-								$("#span-roles").append(" | ".concat(value.roleName));
+								$("#span-roles").append(" [".concat(value.roleName).concat("]"));
 							});
 							$("#modal-user-info").modal("show");
 							
@@ -41,19 +44,28 @@
 				});
 		</script>
 		<div class="modal fade" id="modal-user-info">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">User Information</div>
 				<div class="modal-body">
-					<table cellpadding="11px">
+					<table class="table">
+						<tr>
+							<th>ID : </th>
+							<td>&nbsp;<span id="span-id"></span></td>
+						</tr>
 						<tr>
 							<th>E-mail : </th>
-							<td>&nbsp;<span id="span-email"></span></td>
+							<td><span id="span-email"></span></td>
 						</tr>
 						<tr>
 							<th>Role </th>
 							<td> <span id="span-roles"></span></td>
 						</tr>
 					</table>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 				</div>
 			</div>
 		</div>

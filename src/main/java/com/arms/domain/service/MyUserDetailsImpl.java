@@ -44,6 +44,24 @@ public class MyUserDetailsImpl implements UserDetails{
 		return authority;
 	}
 
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<GrantedAuthority> getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(Set<GrantedAuthority> authority) {
+		this.authority = authority;
+	}
+
 	@Override
 	public String getPassword() {
 		return user.getPassword();
