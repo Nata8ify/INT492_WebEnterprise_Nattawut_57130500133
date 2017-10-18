@@ -31,7 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.failureUrl("/auth/fail")
 		.permitAll().defaultSuccessUrl("/user/list", true)
 		.and()
-		.logout().permitAll();
+		.logout().permitAll()
+		.and().exceptionHandling().accessDeniedPage("/403");
 	}
 
 	

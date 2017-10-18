@@ -12,6 +12,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
 		// TODO Auto-generated method stub
 		registry.addRedirectViewController("/", "/user/list");
 		registry.addViewController("/login").setViewName("user/login");
+		
+		//Error Page
+		registry.addViewController("/403").setViewName("error/403");
 		}
 	
 }
