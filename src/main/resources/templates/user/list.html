@@ -19,7 +19,7 @@
 					<tr th:each="user : ${users}" th:object="${user}">
 						<td th:text="*{id}" class="sub-desc"></td>
 						<td th:text="*{email}" class="sub-desc"></td>
-						<td><i th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove"></i></td>
+						<td><i style="cursor: pointer;" th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove remove-user"></i></td>
 					</tr>
 				</tbody>
 			</table>
@@ -48,7 +48,7 @@
 			<div class="modal-content">
 				<div class="modal-header">User Information</div>
 				<div class="modal-body">
-					<table class="table">
+					<table class="table table-striped">
 						<tr>
 							<th>ID : </th>
 							<td>&nbsp;<span id="span-id"></span></td>

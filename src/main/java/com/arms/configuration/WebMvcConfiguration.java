@@ -9,7 +9,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		// TODO Auto-generated method stub
 		registry.addRedirectViewController("/", "/user/list");
 		registry.addViewController("/login").setViewName("user/login");
 		
