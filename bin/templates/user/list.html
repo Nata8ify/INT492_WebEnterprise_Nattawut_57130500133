@@ -19,7 +19,7 @@
 					<tr th:each="user : ${users}" th:object="${user}">
 						<td th:text="*{id}" class="sub-desc"></td>
 						<td th:text="*{email}" class="sub-desc"></td>
-						<td><i style="cursor: pointer;" th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove remove-user"></i></td>
+						<td><a th:href="'/user/delete/'+*{id}"><i style="cursor: pointer;" th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove remove-user"></i></a></td> 
 					</tr>
 				</tbody>
 			</table>
@@ -30,7 +30,6 @@
 					$.ajax({
 						url : $(this).parent().find("td:eq(0)").html(),
 						success : function(user){
-							console.log(user);
 							$("#span-id").html(user.id);
 							$("#span-email").html(user.email);
 							$("#span-roles").empty();

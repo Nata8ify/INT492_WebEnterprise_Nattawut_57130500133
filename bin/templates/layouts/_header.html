@@ -8,8 +8,8 @@
     <ul class="nav navbar-nav">
     </ul>
     <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
-      <li><a  href="#" ><div class=""><i sec:authentication="principal.authorities"></i></a></li>
-      <li><a  href="#" ><b><span th:text="${#authentication.getPrincipal().getUser().getEmail()}"></span></b></li>
+      <li><a ><div class=""><i sec:authentication="principal.authorities"></i></a></li>
+      <li><a ><b><span th:text="${#authentication.getPrincipal().getUser().getEmail()}"></span></b></li>
       <li><a  href="#" onclick="$('#logout').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>

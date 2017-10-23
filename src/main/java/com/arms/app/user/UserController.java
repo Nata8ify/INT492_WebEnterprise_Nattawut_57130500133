@@ -9,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,6 +35,13 @@ public class UserController {
 		model.addAttribute("users", pageUser.getContent());
 		System.out.println(principal);
 		return "user/list";
+	}
+	
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteUserById(@PathVariable("id") int id){
+		userService.deleteById(id);
+		return "redirect:/user/list";
 	}
 	
 }

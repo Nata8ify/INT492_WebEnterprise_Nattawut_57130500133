@@ -41,10 +41,9 @@ public class MyUserDetailsImpl implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
 		return authority;
 	}
-
-	
 	
 	public User getUser() {
 		return user;

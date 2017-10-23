@@ -21,6 +21,10 @@ public class UserService {
 		return repository.findOne(id);
 	}
 	
+	public void deleteById(int id){
+		repository.delete(id);
+	}
+	
 	public Page<User> findAll(Pageable pageable){
 		return repository.findAll(pageable);
 	}
