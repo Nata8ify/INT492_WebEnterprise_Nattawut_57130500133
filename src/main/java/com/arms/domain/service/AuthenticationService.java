@@ -22,10 +22,6 @@ public class AuthenticationService implements UserDetailsService{
 			return null;
 		}
 		MyUserDetailsImpl myUserDetailsImpl = new MyUserDetailsImpl(user);
-/*		myUserDetailsImpl.setAccountNonExpired(true);
-		myUserDetailsImpl.setAccountNonLocked(true);
-		myUserDetailsImpl.setCredentialsNonExpired(true);
-		myUserDetailsImpl.setEnabled(true);*/
 		return myUserDetailsImpl;
 	}
 	

@@ -37,11 +37,4 @@ public class UserController {
 		return "user/list";
 	}
 	
-	@Secured({ "ROLE_ADMIN" })
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteUserById(@PathVariable("id") int id){
-		userService.deleteById(id);
-		return "redirect:/user/list";
-	}
-	
 }

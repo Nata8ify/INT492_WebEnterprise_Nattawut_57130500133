@@ -21,6 +21,7 @@ public class UserRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public User findUserById(@PathVariable(value = "id") int id, Authentication authentication){
 		System.out.println(((MyUserDetailsImpl)authentication.getPrincipal()).getUser().toString());
+		System.out.println(userService.findById(id).toString());
 		return userService.findById(id);
 	}
 }

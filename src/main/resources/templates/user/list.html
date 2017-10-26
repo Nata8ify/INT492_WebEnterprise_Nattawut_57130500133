@@ -18,24 +18,29 @@
 				<tbody>
 					<tr th:each="user : ${users}" th:object="${user}">
 						<td th:text="*{id}" class="sub-desc"></td>
-						<td th:text="*{email}" class="sub-desc"></td>
-						<td><a th:href="'/user/delete/'+*{id}"><i style="cursor: pointer;" th:if="*{id} != ${#authentication.getPrincipal().getUser().getId()}" id="icon-remove" class="glyphicon glyphicon-remove remove-user"></i></a></td> 
+						<td th:text="*{email}" class="sub-desc" th:style="(*{id} == ${#authentication.getPrincipal().getUser().getId()})?'font-weight: bold;':''" ></td>
+						<td><i style="cursor: pointer;" th:attr="data-id=*{id}" class="glyphicon glyphicon-info-sign user-info"></i></td> 
 					</tr>
 				</tbody>
 			</table>
 			<div th:include="common/pagination :: pagination"></div>
 		</div>
 		<script>
-				$("table tr").on("click", ".sub-desc", function(){
+				$(".user-info").click(function(){
 					$.ajax({
-						url : $(this).parent().find("td:eq(0)").html(),
+						url : $(this).data("id"),
 						success : function(user){
+							console.log(user);
 							$("#span-id").html(user.id);
 							$("#span-email").html(user.email);
 							$("#span-roles").empty();
-							$.each(user.roles, function(index, value){
-								$("#span-roles").append(" [".concat(value.roleName).concat("]"));
-							});
+							if(user.roles == []){
+								$("#span-roles").append("-");
+							} else {
+								$.each(user.roles, function(index, value){
+									$("#span-roles").append(" [".concat(value.roleName).concat("]"));
+								});
+							}
 							$("#modal-user-info").modal("show");
 							
 						}
