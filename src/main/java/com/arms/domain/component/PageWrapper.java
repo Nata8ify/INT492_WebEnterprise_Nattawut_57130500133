@@ -1,6 +1,6 @@
 package com.arms.domain.component;
 
-public class PageProperty {
+public class PageWrapper {
 	
 	public static final int MAX_DISPLAY_PAGES = 7;
 	
@@ -8,7 +8,7 @@ public class PageProperty {
 	private int end;
 	
 	
-	public PageProperty(int current, int totalPages) {
+	public PageWrapper(int current, int totalPages) {
 		int index = MAX_DISPLAY_PAGES - 1;
 		if(totalPages < MAX_DISPLAY_PAGES){
 			this.start = 0;
@@ -27,6 +27,7 @@ public class PageProperty {
 			this.end = current + index/2;
 		}
 	}
+	
 	public int getStart() {
 		return start;
 	}

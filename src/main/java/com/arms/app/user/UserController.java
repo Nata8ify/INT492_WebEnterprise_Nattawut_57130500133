@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.arms.domain.component.PageProperty;
+import com.arms.domain.component.PageWrapper;
 import com.arms.domain.entity.User;
 import com.arms.domain.service.UserService;
 
@@ -29,7 +29,7 @@ public class UserController {
 	public String list(Model model, @PageableDefault(value = 7) Pageable pageable, Principal principal){
 		Page<User> pageUser = userService.findAll(pageable);
 		model.addAttribute("page", pageUser);
-		model.addAttribute("pageprop", new PageProperty(pageable.getPageNumber(), pageUser.getTotalPages()));
+		model.addAttribute("pageprop", new PageWrapper(pageable.getPageNumber(), pageUser.getTotalPages()));
 		model.addAttribute("pageable", pageable);
 		model.addAttribute("url", "/user/list");
 		model.addAttribute("users", pageUser.getContent());

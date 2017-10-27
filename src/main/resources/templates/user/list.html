@@ -17,9 +17,14 @@
 				</thead>
 				<tbody>
 					<tr th:each="user : ${users}" th:object="${user}">
+						<!-- User's Id  -->
 						<td th:text="*{id}" class="sub-desc"></td>
-						<td th:text="*{email}" class="sub-desc" th:style="(*{id} == ${#authentication.getPrincipal().getUser().getId()})?'font-weight: bold;':''" ></td>
-						<td><button class="btn btn-default btn-sm user-info" th:attr="data-id=*{id}" ><i class="glyphicon glyphicon-info-sign"></i></button></td> 
+						<!-- User's Email -->
+						<td th:text="*{email}" class="sub-desc" 
+						th:style="(*{id} == ${#authentication.getPrincipal().getUser().getId()})?'font-weight: bold;':''" ></td>
+						<!-- More Information Button -->
+						<td><button class="btn btn-default btn-sm user-info" 
+						th:attr="data-id=*{id}" ><i class="glyphicon glyphicon-info-sign"></i></button></td> 
 					</tr>
 				</tbody>
 			</table>
