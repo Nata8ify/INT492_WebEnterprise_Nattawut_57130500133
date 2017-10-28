@@ -2,7 +2,7 @@ package com.arms.domain.component;
 
 public class PageWrapper {
 	
-	public static final int MAX_DISPLAY_PAGES = 7;
+	public static final int MAX_DISPLAY_PAGES = 3; //If less than 2 then the pagination will not work properly.
 	
 	private int start;
 	private int end;

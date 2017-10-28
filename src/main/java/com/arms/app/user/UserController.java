@@ -33,7 +33,6 @@ public class UserController {
 		model.addAttribute("pageable", pageable);
 		model.addAttribute("url", "/user/list");
 		model.addAttribute("users", pageUser.getContent());
-		System.out.println(principal);
 		return "user/list";
 	}
 	
