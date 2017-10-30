@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.0.10.16
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 26, 2017 at 08:53 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Host: localhost
+-- Generation Time: Oct 02, 2017 at 11:04 AM
+-- Server version: 5.1.73
+-- PHP Version: 5.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `springboot`
@@ -26,10 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` int(11) NOT NULL,
-  `role_name` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `roles`
@@ -45,11 +46,13 @@ INSERT INTO `roles` (`id`, `role_name`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `users`
@@ -58,8 +61,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
 (1, 'user101@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
 (2, 'user102@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
-(3, 'wilson@mail.com', '92fde850d824c2ba9b563cb6fa4078c3'),
-(4, 'user104@gmail.com', '92fde850d824c2ba9b563cb6fa4078c3'),
+(3, 'user103@gmail.com', 'manager'),
+(4, 'user104@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
 (5, 'user105@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
 (6, 'user106@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
 (7, 'user107@gmail.com', '1d0258c2440a8d19e716292b231e3190'),
@@ -97,9 +100,11 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 -- Table structure for table `users_roles`
 --
 
-CREATE TABLE `users_roles` (
+CREATE TABLE IF NOT EXISTS `users_roles` (
   `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FKj6m8fwv7oqv74fcehir1a9ffy` (`role_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -143,44 +148,6 @@ INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES
 (33, 1),
 (34, 1);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`);
-
---
--- Indexes for table `users_roles`
---
-ALTER TABLE `users_roles`
-  ADD PRIMARY KEY (`user_id`,`role_id`),
-  ADD KEY `FKj6m8fwv7oqv74fcehir1a9ffy` (`role_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

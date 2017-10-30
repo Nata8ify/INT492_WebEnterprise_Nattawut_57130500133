@@ -6,8 +6,9 @@
 </head>
 <body>
 	<div layout:fragment="body">
-		<div class="container-fluid" >
-			<table class="table table-hover table-striped" style="text-align: center;">
+		<div class="container-fluid">
+			<table class="table table-hover table-striped"
+				style="text-align: center;">
 				<thead>
 					<tr>
 						<td><b>ID</b></td>
@@ -20,11 +21,13 @@
 						<!-- User's Id  -->
 						<td th:text="*{id}" class="sub-desc"></td>
 						<!-- User's Email -->
-						<td th:text="*{email}" class="sub-desc" 
-						th:style="(*{id} == ${#authentication.getPrincipal().getUser().getId()})?'font-weight: bold;':''" ></td>
+						<td th:text="*{email}" class="sub-desc"
+							th:style="(*{id} == ${#authentication.getPrincipal().getUser().getId()})?'font-weight: bold;':''"></td>
 						<!-- More Information Button -->
-						<td><button class="btn btn-default btn-sm user-info" 
-						th:attr="data-id=*{id}" ><i class="glyphicon glyphicon-info-sign"></i></button></td> 
+						<td><button class="btn btn-default btn-sm user-info"
+								th:attr="data-id=*{id}">
+								<i class="glyphicon glyphicon-info-sign"></i>
+							</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -53,32 +56,32 @@
 				});
 		</script>
 		<div class="modal fade" id="modal-user-info">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">User Information</div>
-				<div class="modal-body">
-					<table class="table table-striped">
-						<tr>
-							<th>ID : </th>
-							<td>&nbsp;<span id="span-id"></span></td>
-						</tr>
-						<tr>
-							<th>E-mail : </th>
-							<td><span id="span-email"></span></td>
-						</tr>
-						<tr>
-							<th>Role </th>
-							<td> <span id="span-roles"></span></td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">User Information</div>
+					<div class="modal-body">
+						<table class="table table-striped">
+							<tr>
+								<th>ID :</th>
+								<td>&nbsp;<span id="span-id"></span></td>
+							</tr>
+							<tr>
+								<th>E-mail :</th>
+								<td><span id="span-email"></span></td>
+							</tr>
+							<tr>
+								<th>Role</th>
+								<td><span id="span-roles"></span></td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 
 </body>
 </html>

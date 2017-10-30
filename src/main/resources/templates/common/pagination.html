@@ -3,27 +3,35 @@
 		<ul class="pagination">
 			<!-- 1. First Page Link -->
 			<li th:class="${page.number == 0}?'disabled page-item':'page-item'">
-				<a th:if="${page.number != 0}" class="page-link" th:href="@{'/user/list'(page=${0})}">First</a>
-				<span th:if="${page.number == 0}">First</span>
+				<a th:if="${page.number != 0}" class="page-link"
+				th:href="@{'/user/list'(page=${0})}">First</a> <span
+				th:if="${page.number == 0}">First</span>
 			</li>
 			<!-- 2. Previous Page Link -->
 			<li th:class="${page.number == 0}?'disabled page-item':'page-item'">
-				<a th:if="${page.number != 0}" class="page-link" th:href="@{'/user/list'(page=${page.number-1})}">Previous</a>
-				<span th:if="${page.number == 0}">Previous</span>
+				<a th:if="${page.number != 0}" class="page-link"
+				th:href="@{'/user/list'(page=${page.number-1})}">Previous</a> <span
+				th:if="${page.number == 0}">Previous</span>
 			</li>
 			<!-- 3. n Page Link -->
-			<li th:each='i : ${#numbers.sequence(pageprop.start, pageprop.end)}' th:class="(${i}==${page.number})?'page-item active':'page-item'">
-				<a class="page-link" th:href="@{'/user/list'(page=${i})}"> <span th:text='${i+1}'>1</span></a>
+			<li th:each='i : ${#numbers.sequence(pageprop.start, pageprop.end)}'
+				th:class="(${i}==${page.number})?'page-item active':'page-item'">
+				<a class="page-link" th:href="@{'/user/list'(page=${i})}"> <span
+					th:text='${i+1}'>1</span></a>
 			</li>
 			<!-- 4. Next Page Link -->
-			<li th:class="${page.number == page.totalPages-1}?'disabled page-item':'page-item'">
-				<a  th:if="${page.number != page.totalPages-1}" class="page-link" th:href="@{'/user/list'(page=${page.number+1})}">Next</a>
-				<span th:if="${page.number == page.totalPages-1}">Next</span>
+			<li
+				th:class="${page.number == page.totalPages-1}?'disabled page-item':'page-item'">
+				<a th:if="${page.number != page.totalPages-1}" class="page-link"
+				th:href="@{'/user/list'(page=${page.number+1})}">Next</a> <span
+				th:if="${page.number == page.totalPages-1}">Next</span>
 			</li>
 			<!-- 5. Last Page Link -->
-			<li th:class="${page.number == page.totalPages-1}?'disabled page-item':'page-item'">
-				<a  th:if="${page.number != page.totalPages-1}" class="page-link" th:href="@{'/user/list'(page=${page.totalPages-1})}">Last</a>
-				<span th:if="${page.number == page.totalPages-1}">Last</span>
+			<li
+				th:class="${page.number == page.totalPages-1}?'disabled page-item':'page-item'">
+				<a th:if="${page.number != page.totalPages-1}" class="page-link"
+				th:href="@{'/user/list'(page=${page.totalPages-1})}">Last</a> <span
+				th:if="${page.number == page.totalPages-1}">Last</span>
 			</li>
 		</ul>
 	</nav>

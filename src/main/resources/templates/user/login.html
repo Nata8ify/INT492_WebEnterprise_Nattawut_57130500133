@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorator="layouts/main" >
+<html layout:decorator="layouts/main">
 <head>
 <title>Login Page</title>
 </head>
@@ -7,33 +7,60 @@
 	<div layout:fragment="body" class="container">
 		<div class="row">
 			<div class="col-sm-2"></div>
-			<div class="col-sm-8"><br/><br/>
+			<div class="col-sm-8">
+				<br />
 				<div class="well" style="padding: 50px;">
 					<form th:action="@{/login}" method="post">
-					 <div class="form-group" style="margin=16px;">
-						<label>E-mail</label>
-						<input name="email" type="email" placeholder="E-mail" required="required" class="form-control input-lg" value="wilson@mail.com" />
-					</div>
-					<br/>
-					<div class="form-group">
-						<label>Password</label>
-						<input name="password" type="password" placeholder="Password" required="required" class="form-control input-lg" value="4123" />
-					</div>
-					<br/>
-					<div style="float: left;">
-						<small style="color: red;" th:text="${errMessage}"></small>
-					</div>
-					<div style="float: right;">
-						<button type="submit"  class="btn btn-lg btn-default">Login</button>
-						<input type="reset" value="Reset" class="btn btn-lg btn-danger" /> 
-					</div>
-					<br/>
+						<div class="form-group" style="">
+							<label>E-mail</label> <input name="email" type="email"
+								placeholder="E-mail" required="required" id="email"
+								class="form-control input-lg" />
+						</div>
+						<br />
+						<div class="form-group">
+							<label>Password</label> <input name="password" type="password"
+								placeholder="Password" required="required"
+								class="form-control input-lg" id="password"/>
+						</div>
+						<br />
+						<div style="float: left;">
+							<small style="color: red;" th:text="${errMessage}"></small>
+						</div>
+						<div style="float: right;">
+							<button type="submit" class="btn btn-lg btn-default">Login</button>
+							<input type="reset" value="Reset" class="btn btn-lg btn-danger" />
+						</div>
+						<br />
 					</form>
 				</div>
 			</div>
 			<div class="col-sm-2"></div>
-		</div>
 
+		</div>
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<br /> <small><b><u>Say Pal </u></b> : This project is required <a
+					href="https://drive.google.com/file/d/0B-iyI6gvkVKDdzlRU3R1amtCQkk/view?usp=sharing"
+					target="_blank"><i>/Nattawut_57130500133/sql/springboot.sql</i></a>
+					to be imported on localhost's mysql
+				</small>
+				<br /> 
+				<small><b><u>Roles </u></b> : There are 2 roles in this application (<a href="#" id="auto-admin">ADMIN</a>, <a href="#" id="auto-user">USER</a>)</small>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<script type="text/javascript">
+			$("#auto-admin").click(function(){
+				$("#email").val("user101@gmail.com");
+				$("#password").val("manager");
+			});
+			$("#auto-user").click(function(){
+				$("#email").val("user102@gmail.com");
+				$("#password").val("manager");
+			});
+		</script>
 	</div>
+	
 </body>
 </html>
